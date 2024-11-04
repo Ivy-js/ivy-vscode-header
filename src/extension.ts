@@ -26,14 +26,14 @@ import {
  */
 const getCurrentUser = () =>
   vscode.workspace.getConfiguration()
-    .get('42header.username') || process.env['USER'] || 'marvin'
+    .get('ivyheader.username') || process.env['USER'] || 'marvin'
 
 /**
  * Return current user mail from config or default value
  */
 const getCurrentUserMail = () =>
   vscode.workspace.getConfiguration()
-    .get('42header.email') || `${getCurrentUser()}@student.42.fr`
+    .get('ivyheader.email') || `${getCurrentUser()}@student.42.fr`
 
 /**
  * Update HeaderInfo with last update author and date, and update filename
@@ -123,7 +123,7 @@ const startUpdateOnSaveWatcher = (subscriptions: vscode.Disposable[]) =>
 
 export const activate = (context: vscode.ExtensionContext) => {
   const disposable = vscode.commands
-    .registerTextEditorCommand('42header.insertHeader', insertHeaderHandler)
+    .registerTextEditorCommand('ivyheader.insertHeader', insertHeaderHandler)
 
   context.subscriptions.push(disposable)
   startUpdateOnSaveWatcher(context.subscriptions)
